@@ -65,7 +65,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/JavaScript/type-trans.jpg">
 <meta property="og:image" content="http://yoursite.com/images/JavaScript/typeof.png">
-<meta property="og:updated_time" content="2019-11-27T13:30:16.096Z">
+<meta property="og:updated_time" content="2019-11-27T13:57:04.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 类型">
 <meta name="twitter:description" content="JavaScript 类型">
@@ -249,7 +249,7 @@
                 
               
 
-              <time title="创建时间：2019-11-27 09:21:06 / 修改时间：21:30:16" itemprop="dateCreated datePublished" datetime="2019-11-27T09:21:06+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 09:21:06 / 修改时间：21:57:04" itemprop="dateCreated datePublished" datetime="2019-11-27T09:21:06+08:00">2019-11-27</time>
             </span>
           
             
@@ -307,17 +307,17 @@
 <p>当中英文字符混杂组成 String 类型，如果计算要字节个数，可以使用：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strLen</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = str.length; i &lt; len; i++) &#123;</span><br><span class="line">    count += str.charCodeAt(i) &lt; <span class="number">256</span> ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">strLen(<span class="string">"hello尤文"</span>); <span class="comment">// 9</span></span><br><span class="line"></span><br><span class="line"><span class="string">"hello尤文"</span>.length; <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
 
-<p>关于字符编码相关知识，请点击<a href="./运行时-字符编码.md">字符编码</a>。</p>
+<p>关于字符编码相关知识，请点击 <a href="/2019/11/27/字符编码/" title="字符编码">字符编码</a>。</p>
 <h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><p>JavaScript 中的 Number 类型有 18437736874454810627(即 2^64-2^53+3) 个值，基本符合 IEEE 754-2008 规定的双精度浮点数规则。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浮点数的不精确性</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0.1</span> + <span class="number">0.2</span> == <span class="number">0.3</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.abs(<span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span>) &lt;= <span class="built_in">Number</span>.EPSILON); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 区分 Number 类型和 Number 对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="string">"123"</span>);</span><br><span class="line">a === <span class="number">123</span>; <span class="comment">// false。新建一个Number对象。</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Number</span>(<span class="string">"123"</span>);</span><br><span class="line">b === <span class="number">123</span>; <span class="comment">// true。新建一个Number类型。</span></span><br><span class="line">a <span class="keyword">instanceof</span> <span class="built_in">Number</span>; <span class="comment">// is true</span></span><br><span class="line">b <span class="keyword">instanceof</span> <span class="built_in">Number</span>; <span class="comment">// is false</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h3><p>Symbol 是 ES6 中引入的新类型，它是一切非字符串的对象 key 的集合，在 ES6 规范中，整个对象系统被 Symbol 重塑。</p>
-<p>有关于 Symbol 的详细解释，请点击<a href="./运行时-Symbol.md">Symbol 基础</a>。</p>
+<p>有关于 Symbol 的详细解释，请点击 <a href="/2019/11/27/JavaScript-运行时-Symbol/" title="Symbol">Symbol</a>。</p>
 <h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>Object 的定义是“属性的集合”。属性分为<strong>数据属性</strong>和<strong>访问器属性</strong>，二者都是 key-value 结构，key 可以是字符串或者 Symbol 类型。事实上，JavaScript 中的“类”仅仅是运行时对象的一个私有属性，而 JavaScript 中是无法像 Java 那样自定义类型的。</p>
 <p>JavaScript 语言设计上试图模糊 Object 和其他基本类型之间的关系，所以 Object 与基本类型存在装箱与拆箱的操作。</p>
-<p>有关于 Object 的详细解释，请点击<a href="./运行时-Object.md">Object 基础</a>。</p>
+<p>有关于 Object 的详细解释，请点击 <a href="/2019/11/27/JavaScript-运行时-Object/" title="Object">Object</a>。</p>
 <h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p><img src="/images/JavaScript/type-trans.jpg" alt="type-trans"></p>
 <p>上图中，看的角度是从黄底类型转换为绿底类型。</p>
 <h3 id="StringToNumber-的转换"><a href="#StringToNumber-的转换" class="headerlink" title="StringToNumber 的转换"></a>StringToNumber 的转换</h3><ul>
