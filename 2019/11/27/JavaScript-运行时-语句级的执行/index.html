@@ -55,21 +55,22 @@
   };
 </script>
 
-  <meta name="description" content="语句级的执行语句主要分为普通语句、语句块语句、控制型语句以及带标签语句。 因为 JavaScript 语句存在着嵌套关系，所以执行过程实际上主要在一个树形结构上进行， 树形结构的每一个节点执行后产生 Completion Record，根据语句的结构和 Completion Record，JavaScript 实现了各种分支和跳出逻辑  Completion 类型JavaScript 中用 Com">
+  <meta name="description" content="JavaScript 语句的执行">
+<meta name="keywords" content="前端,JavaScript,语句">
 <meta property="og:type" content="article">
-<meta property="og:title" content="It&#39;s My Life">
-<meta property="og:url" content="http://yoursite.com/2019/11/27/运行时-语句级的执行/index.html">
+<meta property="og:title" content="JavaScript 语句的执行">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/JavaScript-运行时-语句级的执行/index.html">
 <meta property="og:site_name" content="It&#39;s My Life">
-<meta property="og:description" content="语句级的执行语句主要分为普通语句、语句块语句、控制型语句以及带标签语句。 因为 JavaScript 语句存在着嵌套关系，所以执行过程实际上主要在一个树形结构上进行， 树形结构的每一个节点执行后产生 Completion Record，根据语句的结构和 Completion Record，JavaScript 实现了各种分支和跳出逻辑  Completion 类型JavaScript 中用 Com">
+<meta property="og:description" content="JavaScript 语句的执行">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/JavaScript/statements.jpg">
 <meta property="og:image" content="http://yoursite.com/images/JavaScript/control-statements.png">
-<meta property="og:updated_time" content="2019-11-27T08:17:17.875Z">
+<meta property="og:updated_time" content="2019-11-27T08:52:58.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="It&#39;s My Life">
-<meta name="twitter:description" content="语句级的执行语句主要分为普通语句、语句块语句、控制型语句以及带标签语句。 因为 JavaScript 语句存在着嵌套关系，所以执行过程实际上主要在一个树形结构上进行， 树形结构的每一个节点执行后产生 Completion Record，根据语句的结构和 Completion Record，JavaScript 实现了各种分支和跳出逻辑  Completion 类型JavaScript 中用 Com">
+<meta name="twitter:title" content="JavaScript 语句的执行">
+<meta name="twitter:description" content="JavaScript 语句的执行">
 <meta name="twitter:image" content="http://yoursite.com/images/JavaScript/statements.jpg">
-  <link rel="canonical" href="http://yoursite.com/2019/11/27/运行时-语句级的执行/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/JavaScript-运行时-语句级的执行/">
 
 
 <script id="page-configurations">
@@ -83,7 +84,7 @@
   };
 </script>
 
-  <title> | It's My Life</title>
+  <title>JavaScript 语句的执行 | It's My Life</title>
   
 
 
@@ -220,7 +221,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/运行时-语句级的执行/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/JavaScript-运行时-语句级的执行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Hu">
@@ -232,7 +233,7 @@
       <meta itemprop="name" content="It's My Life">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">JavaScript 语句的执行
 
           
         </h1>
@@ -248,14 +249,29 @@
                 
               
 
-              <time title="创建时间：2019-11-27 16:00:46 / 修改时间：16:17:17" itemprop="dateCreated datePublished" datetime="2019-11-27T16:00:46+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 15:21:06 / 修改时间：16:52:58" itemprop="dateCreated datePublished" datetime="2019-11-27T15:21:06+08:00">2019-11-27</time>
             </span>
           
             
 
             
           
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
+                
+                
+              
+            </span>
+          
+
+          
+            <div class="post-description">JavaScript 语句的执行</div>
           
 
         </div>
@@ -267,7 +283,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="语句级的执行"><a href="#语句级的执行" class="headerlink" title="语句级的执行"></a>语句级的执行</h1><p>语句主要分为普通语句、语句块语句、控制型语句以及带标签语句。</p>
+        <p>语句主要分为普通语句、语句块语句、控制型语句以及带标签语句。</p>
 <p>因为 JavaScript 语句存在着嵌套关系，所以执行过程实际上主要在一个树形结构上进行， 树形结构的每一个节点执行后产生 Completion Record，根据语句的结构和 Completion Record，JavaScript 实现了各种分支和跳出逻辑</p>
 <p><img src="/images/JavaScript/statements.jpg" alt="statements"></p>
 <h2 id="Completion-类型"><a href="#Completion-类型" class="headerlink" title="Completion 类型"></a>Completion 类型</h2><p>JavaScript 中用 Completion Record 类型来描述语句执行的完成状态。然后，JavaScript 引擎通过这个返回值来决定程序接下来的执行方向。</p>
@@ -325,7 +341,7 @@
 <li>报错: 出错</li>
 </ul>
 <p>第一个例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123; <span class="comment">// point c</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="literal">true</span>)&#123; <span class="comment">// point b</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"111"</span>);</span><br><span class="line">    <span class="keyword">break</span>; <span class="comment">// point a</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"222"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(); <span class="comment">// SyntaxError: Illegal break statement</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// point c</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="comment">// point b</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"111"</span>);</span><br><span class="line">    <span class="keyword">break</span>; <span class="comment">// point a</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"222"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(); <span class="comment">// SyntaxError: Illegal break statement</span></span><br></pre></td></tr></table></figure>
 
 <p>我们可以这么分析：</p>
 <ol>
@@ -355,14 +371,27 @@
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/前端/" rel="tag"># 前端</a>
+            
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            
+              <a href="/tags/语句/" rel="tag"># 语句</a>
+            
+          </div>
+        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/27/JavaScript词法/" rel="next" title="JavaScript 词法">
-                  <i class="fa fa-chevron-left"></i> JavaScript 词法
+                <a href="/2019/11/27/JavaScript-文法-语法/" rel="next" title="JavaScript 语法">
+                  <i class="fa fa-chevron-left"></i> JavaScript 语法
                 </a>
               
             </div>
@@ -371,8 +400,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/11/27/运行时-Symbol/" rel="prev" title="">
-                   <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/27/JavaScript-文法-词法/" rel="prev" title="JavaScript 词法">
+                  JavaScript 词法 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -422,7 +451,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语句级的执行"><span class="nav-number">1.</span> <span class="nav-text">语句级的执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Completion-类型"><span class="nav-number">1.1.</span> <span class="nav-text">Completion 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通语句的执行"><span class="nav-number">1.2.</span> <span class="nav-text">普通语句的执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句块的执行"><span class="nav-number">1.3.</span> <span class="nav-text">语句块的执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制型语句的执行"><span class="nav-number">1.4.</span> <span class="nav-text">控制型语句的执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带标签的语句的执行"><span class="nav-number">1.5.</span> <span class="nav-text">带标签的语句的执行</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Completion-类型"><span class="nav-number">1.</span> <span class="nav-text">Completion 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通语句的执行"><span class="nav-number">2.</span> <span class="nav-text">普通语句的执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句块的执行"><span class="nav-number">3.</span> <span class="nav-text">语句块的执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制型语句的执行"><span class="nav-number">4.</span> <span class="nav-text">控制型语句的执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带标签的语句的执行"><span class="nav-number">5.</span> <span class="nav-text">带标签的语句的执行</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -463,7 +492,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
