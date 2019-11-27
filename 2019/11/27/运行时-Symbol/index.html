@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="SymbolES6 引入 Symbol 是为了表示唯一的值ES5 的对象属性名都是字符串，这容易造成属性名的冲突。比如，你使用了一个他人提供的对象，但又想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。如果有一种机制，保证每个属性的名字都是独一无二的就好了，这样就从根本上防止属性名的冲突。这就是 ES6 引入 Symbol 的主要原因。 另外，有些时候我们不关心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="It&#39;s My Life">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/运行时-Symbol/index.html">
+<meta property="og:site_name" content="It&#39;s My Life">
+<meta property="og:description" content="SymbolES6 引入 Symbol 是为了表示唯一的值ES5 的对象属性名都是字符串，这容易造成属性名的冲突。比如，你使用了一个他人提供的对象，但又想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。如果有一种机制，保证每个属性的名字都是独一无二的就好了，这样就从根本上防止属性名的冲突。这就是 ES6 引入 Symbol 的主要原因。 另外，有些时候我们不关心">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-12T06:25:46.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="It&#39;s My Life">
+<meta name="twitter:description" content="SymbolES6 引入 Symbol 是为了表示唯一的值ES5 的对象属性名都是字符串，这容易造成属性名的冲突。比如，你使用了一个他人提供的对象，但又想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。如果有一种机制，保证每个属性的名字都是独一无二的就好了，这样就从根本上防止属性名的冲突。这就是 ES6 引入 Symbol 的主要原因。 另外，有些时候我们不关心">
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/运行时-Symbol/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title> | It's My Life</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">It's My Life</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/运行时-Symbol/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="It's My Life">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-27 16:00:46" itemprop="dateCreated datePublished" datetime="2019-11-27T16:00:46+08:00">2019-11-27</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-12 14:25:46" itemprop="dateModified" datetime="2019-11-12T14:25:46+08:00">2019-11-12</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><h2 id="ES6-引入-Symbol-是为了表示唯一的值"><a href="#ES6-引入-Symbol-是为了表示唯一的值" class="headerlink" title="ES6 引入 Symbol 是为了表示唯一的值"></a>ES6 引入 Symbol 是为了表示唯一的值</h2><p><strong>ES5 的对象属性名都是字符串</strong>，这容易造成属性名的冲突。比如，你使用了一个他人提供的对象，但又想为这个对象添加新的方法（mixin 模式），新方法的名字就有可能与现有方法产生冲突。如果有一种机制，保证每个属性的名字都是独一无二的就好了，这样就从根本上防止属性名的冲突。这就是 ES6 引入 Symbol 的主要原因。</p>
+<p>另外，有些时候我们不关心具体的值，只要确保它唯一。比如，我们做一个游戏程序，用户需要选择角色的种族。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="string">"protoss"</span>, <span class="comment">// 神族</span></span><br><span class="line">  terran: <span class="string">"terran"</span>, <span class="comment">// 人族</span></span><br><span class="line">  zerg: <span class="string">"zerg"</span> <span class="comment">// 虫族</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRole</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (type === race.protoss) &#123;</span><br><span class="line">    创建神族角色;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type === race.terran) &#123;</span><br><span class="line">    创建人族角色;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type === race.zerg) &#123;</span><br><span class="line">    创建虫族角色;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么用户选择种族后，就需要调用 createRole 来创建角色：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传入字符串</span></span><br><span class="line">createRole(<span class="string">"zerg"</span>);</span><br><span class="line"><span class="comment">// 或者传入变量</span></span><br><span class="line">createRole(race.zerg);</span><br></pre></td></tr></table></figure>
+
+<p>一般传入字符串被认为是不好的做法，所以使用 <code>createRole(race.zerg)</code> 的更多。</p>
+<p>如果使用 <code>createRole(race.zerg)</code>，我们发现 race.protoss、race.terran、race.zerg 的值为多少并不重要。</p>
+<p>改为如下写法，对 <code>createRole(race.zerg)</code> 毫无影响：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="string">"askdjaslkfjas;lfkjas;flkj"</span>, <span class="comment">// 神族</span></span><br><span class="line">  terran: <span class="string">";lkfalksjfl;askjfsfal;skfj"</span>, <span class="comment">// 人族</span></span><br><span class="line">  zerg: <span class="string">"qwieqwoirqwoiruoiwqoisrqwroiu"</span> <span class="comment">// 虫族</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>也就是说,<strong>race.zerg 的值是多少无所谓，只要它的值跟 race.protoss 和 race.terran 的值不一样就行。</strong></p>
+<p>Symbol 的用途就是如此：<strong>Symbol 可以创建一个独一无二的值（但并不是字符串）</strong>。</p>
+<p>用 Symbol 来改写上面的 race：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="built_in">Symbol</span>(),</span><br><span class="line">  terran: <span class="built_in">Symbol</span>(),</span><br><span class="line">  zerg: <span class="built_in">Symbol</span>()</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">race.protoss !== race.terran; <span class="comment">// true</span></span><br><span class="line">race.protoss !== race.zerg; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>你也可以给每个 Symbol 起一个名字：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="built_in">Symbol</span>(<span class="string">"protoss"</span>),</span><br><span class="line">  terran: <span class="built_in">Symbol</span>(<span class="string">"terran"</span>),</span><br><span class="line">  zerg: <span class="built_in">Symbol</span>(<span class="string">"zerg"</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>不过这个名字跟 Symbol 的值并没有关系，你可以认为这个名字就是个注释。如下代码可以证明 Symbol 的名字与值无关：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = <span class="built_in">Symbol</span>(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">var</span> a2 = <span class="built_in">Symbol</span>(<span class="string">"a"</span>);</span><br><span class="line">a1 !== a2; <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>(<span class="string">"s"</span>);</span><br><span class="line">o[s1] = <span class="string">"sym"</span>; <span class="comment">// 属性名为 Symbol(s)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"s"</span>);</span><br><span class="line">o[s2] = <span class="string">"sym"</span>; <span class="comment">// 属性名为 Symbol(s)。注意，s2 也是唯一的，与 s1 的值并不相等，虽然描述都是"s"</span></span><br><span class="line"></span><br><span class="line">o; <span class="comment">// &#123;name: "hello", gender: "male", age: 30, Symbol(s): "sym", Symbol(s): "sym"&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-的属性-key-创建方式"><a href="#Object-的属性-key-创建方式" class="headerlink" title="Object 的属性 key 创建方式"></a>Object 的属性 key 创建方式</h2><p>Object 的属性 key，使用 String 类型创建方式有四种，使用 Symbol 类型创建方式有三种。</p>
+<ul>
+<li><p>String 类型作为属性 key</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种方式</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  name: <span class="string">"hello"</span> <span class="comment">// 属性名为 name</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种方式</span></span><br><span class="line">o.gender = <span class="string">"male"</span>; <span class="comment">// 属性名为 gender</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三种方式</span></span><br><span class="line"><span class="keyword">var</span> t = <span class="string">"age"</span>;</span><br><span class="line">o[t] = <span class="number">30</span>; <span class="comment">// 属性名为 age</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第四种方式</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">"age"</span>, &#123;</span><br><span class="line">  value: <span class="number">30</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Symbol 类型作为属性 key</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mySymbol = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一种写法</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line">a[mySymbol] = <span class="string">"Hello!"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种写法</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  [mySymbol]: <span class="string">"Hello!"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三种写法</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, mySymbol, &#123; <span class="attr">value</span>: <span class="string">"Hello!"</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上写法都得到同样结果</span></span><br><span class="line">a[mySymbol]; <span class="comment">// "Hello!"</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，<strong>Symbol 值作为对象属性名时，不能用点运算符</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mySymbol = <span class="built_in">Symbol</span>(<span class="string">"mysymbol"</span>);</span><br><span class="line"><span class="keyword">const</span> a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">a.mySymbol = <span class="string">"Hello!"</span>; <span class="comment">// 属性是 String 类型才能使用点运算符</span></span><br><span class="line">a[mySymbol] = <span class="string">"World"</span>;</span><br><span class="line">a; <span class="comment">// &#123;mySymbol: "Hello!", Symbol(mysymbol): "World"&#125;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Symbol-作为属性-key-时，Object-中属性的遍历"><a href="#Symbol-作为属性-key-时，Object-中属性的遍历" class="headerlink" title="Symbol 作为属性 key 时，Object 中属性的遍历"></a>Symbol 作为属性 key 时，Object 中属性的遍历</h2><p>Symbol 作为属性名，该属性不会出现在 <code>for...in</code>、<code>for...of</code> 循环中，也不会被 <code>Object.keys()</code> 、 <code>Object.getOwnPropertyNames()</code> 、 <code>JSON.stringify()</code> 返回。但是，它也不是私有属性，有一个 <code>Object.getOwnPropertySymbols(object)</code> 方法，可以获取指定对象的所有 Symbol 属性名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>(<span class="string">"b"</span>);</span><br><span class="line"></span><br><span class="line">obj[a] = <span class="string">"Hello"</span>;</span><br><span class="line">obj[b] = <span class="string">"World"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> objectSymbols = <span class="built_in">Object</span>.getOwnPropertySymbols(obj);</span><br><span class="line"></span><br><span class="line">objectSymbols;</span><br><span class="line"><span class="comment">// [Symbol(a), Symbol(b)]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Symbol-类型的创建方式"><a href="#Symbol-类型的创建方式" class="headerlink" title="Symbol 类型的创建方式"></a>Symbol 类型的创建方式</h2><p>Symbol 类型主要有两种创建方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种</span></span><br><span class="line"><span class="keyword">var</span> mySymbol = <span class="built_in">Symbol</span>(<span class="string">"my symbol"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种。具体参考下文。</span></span><br><span class="line"><span class="keyword">var</span> myAnotherSymbol = <span class="built_in">Symbol</span>.for(<span class="string">"my symbol"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Symbol-API"><a href="#Symbol-API" class="headerlink" title="Symbol API"></a>Symbol API</h2><ul>
+<li><p>Symbol.for<br>接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，否则就新建并返回一个以该字符串为名称的 Symbol 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</span><br><span class="line"></span><br><span class="line">s1 === s2; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Symbol.for()</code>与 <code>Symbol()</code>这两种写法，都会生成新的 Symbol。它们的区别是，前者会被登记在全局环境中供搜索，后者不会。<code>Symbol.for()</code>不会每次调用就返回一个新的 Symbol 类型的值，而是会先检查给定的 key 是否已经存在，如果不存在才会新建一个值。比如，如果你调用 <code>Symbol.for(&quot;cat&quot;)</code> 30 次，每次都会返回同一个 Symbol 值，但是调用 <code>Symbol(&quot;cat&quot;)</code> 30 次，会返回 30 个不同的 Symbol 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>);</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>(<span class="string">"bar"</span>);</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，由于 Symbol()写法没有登记机制，所以每次调用都会返回一个不同的值。</p>
+</li>
+<li><p>Symbol.keyFor<br>方法返回一个已登记的 Symbol 类型值的 key。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</span><br><span class="line"><span class="built_in">Symbol</span>.keyFor(s1); <span class="comment">// "foo"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>);</span><br><span class="line"><span class="built_in">Symbol</span>.keyFor(s2); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，变量 s2 属于未登记的 Symbol 值，所以返回 undefined。</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/27/运行时-语句级的执行/" rel="next" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/11/27/运行时-Truthy的使用/" rel="prev" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Symbol"><span class="nav-number">1.</span> <span class="nav-text">Symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-引入-Symbol-是为了表示唯一的值"><span class="nav-number">1.1.</span> <span class="nav-text">ES6 引入 Symbol 是为了表示唯一的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-的属性-key-创建方式"><span class="nav-number">1.2.</span> <span class="nav-text">Object 的属性 key 创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-作为属性-key-时，Object-中属性的遍历"><span class="nav-number">1.3.</span> <span class="nav-text">Symbol 作为属性 key 时，Object 中属性的遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-类型的创建方式"><span class="nav-number">1.4.</span> <span class="nav-text">Symbol 类型的创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol-API"><span class="nav-number">1.5.</span> <span class="nav-text">Symbol API</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Frank Hu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Hu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -55,21 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="JavaScript 总览">
-<meta name="keywords" content="前端,JavaScript">
+  <meta name="description" content="JavaScript 中的一些坑">
+<meta name="keywords" content="前端,JavaScript,注意事项">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript-Guide">
-<meta property="og:url" content="http://yoursite.com/2019/11/27/JavaScript-Guide/index.html">
+<meta property="og:title" content="JavaScript 的注意事项">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/JavaScript的注意事项/index.html">
 <meta property="og:site_name" content="It&#39;s My Life">
-<meta property="og:description" content="JavaScript 总览">
+<meta property="og:description" content="JavaScript 中的一些坑">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/JavaScript/javascript.png">
-<meta property="og:updated_time" content="2019-11-27T07:39:50.542Z">
+<meta property="og:updated_time" content="2019-11-27T08:01:53.304Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript-Guide">
-<meta name="twitter:description" content="JavaScript 总览">
-<meta name="twitter:image" content="http://yoursite.com/images/JavaScript/javascript.png">
-  <link rel="canonical" href="http://yoursite.com/2019/11/27/JavaScript-Guide/">
+<meta name="twitter:title" content="JavaScript 的注意事项">
+<meta name="twitter:description" content="JavaScript 中的一些坑">
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/JavaScript的注意事项/">
 
 
 <script id="page-configurations">
@@ -83,7 +81,7 @@
   };
 </script>
 
-  <title>JavaScript-Guide | It's My Life</title>
+  <title>JavaScript 的注意事项 | It's My Life</title>
   
 
 
@@ -220,7 +218,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/JavaScript-Guide/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/JavaScript的注意事项/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Hu">
@@ -232,7 +230,7 @@
       <meta itemprop="name" content="It's My Life">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">JavaScript-Guide
+        <h1 class="post-title" itemprop="name headline">JavaScript 的注意事项
 
           
         </h1>
@@ -248,7 +246,7 @@
                 
               
 
-              <time title="创建时间：2019-11-27 15:21:06 / 修改时间：15:39:50" itemprop="dateCreated datePublished" datetime="2019-11-27T15:21:06+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-27 15:21:06 / 修改时间：16:01:53" itemprop="dateCreated datePublished" datetime="2019-11-27T15:21:06+08:00">2019-11-27</time>
             </span>
           
             
@@ -270,7 +268,7 @@
           
 
           
-            <div class="post-description">JavaScript 总览</div>
+            <div class="post-description">JavaScript 中的一些坑</div>
           
 
         </div>
@@ -282,53 +280,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>JavaScript 的主要功能是响应用户对网页的行为，从而更改网页内容和展示形式。对任何编程语言来说，必定是<strong>用规定的文法，表达特定语义，最终操作运行时</strong>。</p>
-<p>一般来说，<strong>程序=算法+数据结构</strong>，对运行时来说，类型就是数据结构，执行过程就是算法。</p>
-<p>JavaScript 文件从编写到执行的过程为：</p>
-<p><img src="/images/JavaScript/javascript.png" alt="javascript"></p>
-<p>图中，编写 JavaScript 文件并以二进制流的形式存储。当需要执行这个文件时，将文件以二进制流的形式读取出来，交给 JavaScript 引擎去解码、词法分析、语法分析、执行。</p>
-<h2 id="JavaScript-的知识架构"><a href="#JavaScript-的知识架构" class="headerlink" title="JavaScript 的知识架构"></a>JavaScript 的知识架构</h2><ul>
-<li><p>文法</p>
-<ul>
-<li><a href="/JavaScript/文法-词法.md">词法</a></li>
-<li><a href="/JavaScript/文法-语法.md">语法</a><ul>
-<li><a href="/JavaScript/文法-CommonJS和ES6Modules.md">CommonJS 和 ES6 Modules</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>语义</p>
-</li>
-<li><p>运行时</p>
-<ul>
-<li>数据结构<ul>
-<li><a href="/JavaScript/运行时-类型.md">类型</a><ul>
-<li><a href="/JavaScript/运行时-字符编码.md">编码</a></li>
-<li><a href="/JavaScript/运行时-Symbol.md">Symbol</a></li>
-<li><a href="/JavaScript/运行时-Object.md">Object</a></li>
-<li><a href="/JavaScript/运行时-HandleBigIntinJavaScript.md">Handle Big Int in JavaScript</a></li>
-</ul>
-</li>
-<li>实例<ul>
-<li>应用和机制</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法<ul>
-<li><a href="/JavaScript/运行时-事件循环和宏观任务和微观任务.md">事件循环、宏观任务和微观任务</a></li>
-<li><a href="/JavaScript/运行时-函数的执行.md">函数的执行</a></li>
-<li><a href="/JavaScript/运行时-语句级的执行.md">语句级的执行</a><ul>
-<li><a href="/JavaScript/运行时-Truthy的使用.md">Truthy 的使用</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="使用-JavaScript-的注意事项"><a href="#使用-JavaScript-的注意事项" class="headerlink" title="使用 JavaScript 的注意事项"></a>使用 JavaScript 的注意事项</h2><p>JavaScript 有很多令人奇怪的语言特性，有些都能算是语言缺陷了。整理如下:</p>
-<p><a href="/JavaScript/JavaScript的注意事项.md">JavaScript 的注意事项</a></p>
+        <p>JavaScript 的语言特性和其他语言不太一样，这也使不是很熟悉 JavaScript 语法的朋友遇到奇怪的问题。为了减少这些问题的发生，本文整理了常见的问题和解决方案。</p>
+<h2 id="类型问题"><a href="#类型问题" class="headerlink" title="类型问题"></a>类型问题</h2><p>由于 JavaScript 中，变量是没有类型的，只有值有类型。</p>
+<p>这导致难以判断某个变量运算后其中的值是啥类型。</p>
+<p>解决方法是：使用 TypeScript。</p>
+<h2 id="Number-计算问题"><a href="#Number-计算问题" class="headerlink" title="Number 计算问题"></a>Number 计算问题</h2><p>在 JavaScript 中，数字相关的类型只有 Number 类型，而且使用双精度浮点数表示，也就是说，JavaScript 中是没有整数概念的。</p>
+<p>这导致了 JavaScript 在计算整数和小数时都要加倍小心。</p>
+<p>解决方法是： 使用 decimal.js。</p>
+<h2 id="回调地狱问题"><a href="#回调地狱问题" class="headerlink" title="回调地狱问题"></a>回调地狱问题</h2><p>回调地狱时 JavaScript 在使用回调函数时产生的，会使代码很难维护。</p>
+<p>解决方法是：使用 async/await。</p>
+<h2 id="全局变量污染问题"><a href="#全局变量污染问题" class="headerlink" title="全局变量污染问题"></a>全局变量污染问题</h2><p>在写 JavaScript 时，会不小心将变量变为全局变量。</p>
+<p>解决方法是：使用 Closure/IIFE/ES6 Modules/let/const</p>
+<h2 id="自动增加-问题"><a href="#自动增加-问题" class="headerlink" title="自动增加;问题"></a>自动增加<code>;</code>问题</h2><p>JavaScript 会在代码中自动增加<code>;</code>表示表达式的结束，但有些时候会与编程人员的思路不一致。</p>
+<p>解决方法是：使用 eslint/prettier 等工具。</p>
 
     </div>
 
@@ -348,6 +312,8 @@
             
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
             
+              <a href="/tags/注意事项/" rel="tag"># 注意事项</a>
+            
           </div>
         
 
@@ -356,8 +322,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/15/相对路径的简单解释/" rel="next" title="相对路径的简单解释">
-                  <i class="fa fa-chevron-left"></i> 相对路径的简单解释
+                <a href="/2019/11/27/JavaScript词法/" rel="next" title="JavaScript 词法">
+                  <i class="fa fa-chevron-left"></i> JavaScript 词法
                 </a>
               
             </div>
@@ -365,6 +331,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/11/27/运行时-语句级的执行/" rel="prev" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -413,7 +383,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-的知识架构"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 的知识架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-JavaScript-的注意事项"><span class="nav-number">2.</span> <span class="nav-text">使用 JavaScript 的注意事项</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型问题"><span class="nav-number">1.</span> <span class="nav-text">类型问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-计算问题"><span class="nav-number">2.</span> <span class="nav-text">Number 计算问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回调地狱问题"><span class="nav-number">3.</span> <span class="nav-text">回调地狱问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量污染问题"><span class="nav-number">4.</span> <span class="nav-text">全局变量污染问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动增加-问题"><span class="nav-number">5.</span> <span class="nav-text">自动增加;问题</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -428,7 +398,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -454,7 +424,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
