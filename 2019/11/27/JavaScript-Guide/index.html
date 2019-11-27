@@ -55,22 +55,21 @@
   };
 </script>
 
-  <meta name="description" content="Handle Big Int in JavaScript">
-<meta name="keywords" content="前端,JavaScript,Big Int">
+  <meta name="description" content="知识架构，编织 JavaScript 的全貌">
+<meta name="keywords" content="前端,JavaScript,知识架构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Handle Big Int in JavaScript">
-<meta property="og:url" content="http://yoursite.com/2019/11/30/JavaScript-运行时-HandleBigIntinJavaScript/index.html">
+<meta property="og:title" content="JavaScript 知识架构">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/JavaScript-Guide/index.html">
 <meta property="og:site_name" content="It&#39;s My Life">
-<meta property="og:description" content="Handle Big Int in JavaScript">
+<meta property="og:description" content="知识架构，编织 JavaScript 的全貌">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/JavaScript/BigInt.png">
-<meta property="og:image" content="http://yoursite.com/images/JavaScript/jsbi.png">
-<meta property="og:updated_time" content="2019-11-27T08:38:23.667Z">
+<meta property="og:image" content="http://yoursite.com/images/JavaScript/javascript.png">
+<meta property="og:updated_time" content="2019-11-27T13:41:17.059Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Handle Big Int in JavaScript">
-<meta name="twitter:description" content="Handle Big Int in JavaScript">
-<meta name="twitter:image" content="http://yoursite.com/images/JavaScript/BigInt.png">
-  <link rel="canonical" href="http://yoursite.com/2019/11/30/JavaScript-运行时-HandleBigIntinJavaScript/">
+<meta name="twitter:title" content="JavaScript 知识架构">
+<meta name="twitter:description" content="知识架构，编织 JavaScript 的全貌">
+<meta name="twitter:image" content="http://yoursite.com/images/JavaScript/javascript.png">
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/JavaScript-Guide/">
 
 
 <script id="page-configurations">
@@ -84,7 +83,7 @@
   };
 </script>
 
-  <title>Handle Big Int in JavaScript | It's My Life</title>
+  <title>JavaScript 知识架构 | It's My Life</title>
   
 
 
@@ -221,7 +220,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/JavaScript-运行时-HandleBigIntinJavaScript/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/JavaScript-Guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Hu">
@@ -233,7 +232,7 @@
       <meta itemprop="name" content="It's My Life">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Handle Big Int in JavaScript
+        <h1 class="post-title" itemprop="name headline">JavaScript 知识架构
 
           
         </h1>
@@ -249,19 +248,11 @@
                 
               
 
-              <time title="创建时间：2019-11-30 15:21:06" itemprop="dateCreated datePublished" datetime="2019-11-30T15:21:06+08:00">2019-11-30</time>
+              <time title="创建时间：2019-11-27 01:21:06 / 修改时间：21:41:17" itemprop="dateCreated datePublished" datetime="2019-11-27T01:21:06+08:00">2019-11-27</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-27 16:38:23" itemprop="dateModified" datetime="2019-11-27T16:38:23+08:00">2019-11-27</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -279,7 +270,7 @@
           
 
           
-            <div class="post-description">Handle Big Int in JavaScript</div>
+            <div class="post-description">知识架构，编织 JavaScript 的全貌</div>
           
 
         </div>
@@ -291,38 +282,54 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在 JavaScript 中运算比较大的 Number 类型时，会碰到如下问题：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myNumb = <span class="number">1000000000000000000000</span>;</span><br><span class="line">myNumb + <span class="number">1</span> === myNumb; <span class="comment">// 加没加竟然一样。。。</span></span><br></pre></td></tr></table></figure>
-
-<p>造成这个问题的原因是当 Number 超过 <code>Number.MAX_SAFE_INTEGER</code> 后，会损失精度。</p>
-<p>Big Int 丢失精度问题在银行等系统中会碰到，以前的解决方法是引用其他库来做运算。Google 在 V8 引擎中内置了 BigInt 类型来解决 Big Int 丢失精度问题。</p>
-<h2 id="以前的解决方案"><a href="#以前的解决方案" class="headerlink" title="以前的解决方案"></a>以前的解决方案</h2><p>许多库使用 String 来存储大数来解决这个问题，如 bignum.js。但是，这些库效率没有 BigInt 高。</p>
-<h2 id="BigInt-的解决方案"><a href="#BigInt-的解决方案" class="headerlink" title="BigInt 的解决方案"></a>BigInt 的解决方案</h2><h3 id="在提供-BigInt-的宿主中使用"><a href="#在提供-BigInt-的宿主中使用" class="headerlink" title="在提供 BigInt 的宿主中使用"></a>在提供 BigInt 的宿主中使用</h3><p>Chrome 等浏览器中引入了 BigInt 类型来解决大数问题。</p>
-<p>创建 BigInt 的两种方式：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. Use BigInt()</span></span><br><span class="line"><span class="keyword">var</span> a = BigInt(<span class="number">123</span>); <span class="comment">// 123n</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Add suffix n</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">123</span>n; <span class="comment">// 123n</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> a; <span class="comment">// bigint</span></span><br><span class="line"><span class="keyword">typeof</span> b; <span class="comment">// bigint</span></span><br></pre></td></tr></table></figure>
-
-<p>使用 BigInt 进行运算：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234567890123456789</span> * <span class="number">123</span>; <span class="comment">// 151851850485185200000 损失精度</span></span><br><span class="line"></span><br><span class="line"><span class="number">1234567890123456789</span>n * <span class="number">123</span>n; <span class="comment">// 151851850485185185047n 精度无损失</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="在不提供-BigInt-的宿主中使用"><a href="#在不提供-BigInt-的宿主中使用" class="headerlink" title="在不提供 BigInt 的宿主中使用"></a>在不提供 BigInt 的宿主中使用</h3><p><img src="/images/JavaScript/BigInt.png" alt="BigInt"></p>
-<p>通过查询 <a href="https://caniuse.com/#search=BigInt" target="_blank" rel="noopener">Can-I-Use</a> ,发现这个解决方案在大部分浏览器不适用。</p>
-<p>在不支持 BigInt 的浏览器上，可以 Polyfilling and transpiling BigInts。由于 BigInt 的特殊性，BigInt 跟普通的 Polyfilling 不一样，BigInt 的代码不能转化为 ES5 标准。使用 Google 开发的 JSBI 库,能在各个浏览器中使用 BigInt。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用JSBI库</span></span><br><span class="line"><span class="keyword">import</span> JSBI <span class="keyword">from</span> <span class="string">"./jsbi.mjs"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> max = JSBI.BigInt(<span class="built_in">Number</span>.MAX_SAFE_INTEGER);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>(max));</span><br><span class="line"><span class="comment">// → '9007199254740991'</span></span><br><span class="line"><span class="keyword">const</span> other = JSBI.BigInt(<span class="string">"2"</span>);</span><br><span class="line"><span class="keyword">const</span> result = JSBI.add(max, other);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>(result));</span><br><span class="line"><span class="comment">// → '9007199254740993'</span></span><br></pre></td></tr></table></figure>
-
-<p>如果需要直接在浏览器能使用，也可以引用 <code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jsbi@2.0.5/dist/jsbi-umd.min.js&quot;&gt;&lt;/script&gt;</code> 脚本。</p>
-<p>寻找这个脚本的方法如下：</p>
-<ol>
-<li><p>Get to <a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">cdn</a></p>
-</li>
-<li><p>Search “JSBI”, and get to <a href="https://www.jsdelivr.com/package/npm/jsbi" target="_blank" rel="noopener">jsbi</a></p>
-</li>
-<li><p>Copy the jsbi cdn url</p>
-<p><img src="/images/JavaScript/jsbi.png" alt="jsbi"></p>
-</li>
-</ol>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="https://developers.google.com/web/updates/2018/05/bigint" target="_blank" rel="noopener">arbitrary-precision integers in JavaScript</a>: 讲解了 BigInt 在 V8 引擎上的使用。</li>
+        <p>JavaScript 的主要功能是响应用户对网页的行为，从而更改网页内容和展示形式。对任何编程语言来说，必定是<strong>用规定的文法，表达特定语义，最终操作运行时</strong>。</p>
+<p>一般来说，<strong>程序=算法+数据结构</strong>，对运行时来说，类型就是数据结构，执行过程就是算法。</p>
+<p>JavaScript 文件从编写到执行的过程为：</p>
+<p><img src="/images/JavaScript/javascript.png" alt="javascript"></p>
+<p>图中，编写 JavaScript 文件并以二进制流的形式存储。当需要执行这个文件时，将文件以二进制流的形式读取出来，交给 JavaScript 引擎去解码、词法分析、语法分析、执行。</p>
+<h2 id="JavaScript-的知识架构"><a href="#JavaScript-的知识架构" class="headerlink" title="JavaScript 的知识架构"></a>JavaScript 的知识架构</h2><ul>
+<li>文法<ul>
+<li><a href="/2019/11/27/JavaScript-文法-词法/" title="词法">词法</a></li>
+<li><a href="/2019/11/27/JavaScript-文法-语法/" title="语法">语法</a>
+<ul>
+<li><a href="/2019/11/27/JavaScript-文法-CommonJS和ES6Modules/" title="CommonJS 和 ES6Modules">CommonJS 和 ES6Modules</a></li>
 </ul>
+</li>
+</ul>
+</li>
+<li>语义</li>
+<li>运行时<ul>
+<li>数据结构<ul>
+<li><a href="/2019/11/27/JavaScript-运行时-类型/" title="类型">类型</a>
+<ul>
+<li><a href="/2019/11/27/JavaScript-运行时-Symbol/" title="Symbol">Symbol</a></li>
+<li><a href="/2019/11/27/JavaScript-运行时-Object/" title="Object">Object</a></li>
+<li><a href="/2019/11/27/JavaScript-运行时-HandleBigIntinJavaScript/" title="Handle Big Int in JavaScript">Handle Big Int in JavaScript</a></li>
+</ul>
+</li>
+<li>实例<ul>
+<li>应用和机制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li><a href="/2019/11/27/JavaScript-运行时-事件循环和宏观任务和微观任务/" title="事件循环和宏观任务和微观任务">事件循环和宏观任务和微观任务</a></li>
+<li><a href="/2019/11/27/JavaScript-运行时-函数的执行/" title="函数的执行">函数的执行</a></li>
+<li><a href="/2019/11/27/JavaScript-运行时-语句级的执行/" title="语句级的执行">语句级的执行</a>
+<ul>
+<li><a href="/2019/11/27/JavaScript-运行时-Truthy的使用/" title="Truthy 的使用">Truthy 的使用</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用-JavaScript-的注意事项"><a href="#使用-JavaScript-的注意事项" class="headerlink" title="使用 JavaScript 的注意事项"></a>使用 JavaScript 的注意事项</h2><p>JavaScript 有很多令人奇怪的语言特性，有些都能算是语言缺陷了。整理如下:</p>
+<a href="/2019/11/27/JavaScript的注意事项/" title="JavaScript的注意事项">JavaScript的注意事项</a>
 
     </div>
 
@@ -342,7 +349,7 @@
             
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
             
-              <a href="/tags/Big-Int/" rel="tag"># Big Int</a>
+              <a href="/tags/知识架构/" rel="tag"># 知识架构</a>
             
           </div>
         
@@ -352,8 +359,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/30/JavaScript-运行时-Truthy的使用/" rel="next" title="JavaScript 中 Truthy 的使用">
-                  <i class="fa fa-chevron-left"></i> JavaScript 中 Truthy 的使用
+                <a href="/2019/11/15/相对路径的简单解释/" rel="next" title="相对路径的简单解释">
+                  <i class="fa fa-chevron-left"></i> 相对路径的简单解释
                 </a>
               
             </div>
@@ -362,8 +369,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/11/30/JavaScript-文法-CommonJS和ES6Modules/" rel="prev" title="CommonJS 和 ES6 Modules">
-                  CommonJS 和 ES6 Modules <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/27/JavaScript-文法-词法/" rel="prev" title="JavaScript 词法">
+                  JavaScript 词法 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -413,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以前的解决方案"><span class="nav-number">1.</span> <span class="nav-text">以前的解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BigInt-的解决方案"><span class="nav-number">2.</span> <span class="nav-text">BigInt 的解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在提供-BigInt-的宿主中使用"><span class="nav-number">2.1.</span> <span class="nav-text">在提供 BigInt 的宿主中使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在不提供-BigInt-的宿主中使用"><span class="nav-number">2.2.</span> <span class="nav-text">在不提供 BigInt 的宿主中使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-的知识架构"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 的知识架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-JavaScript-的注意事项"><span class="nav-number">2.</span> <span class="nav-text">使用 JavaScript 的注意事项</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
