@@ -55,14 +55,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FINO ALLA FINE">
-<meta property="og:url" content="http://yoursite.com/tags/词法/index.html">
+  <meta name="description" content="XML 与 HTML 的恩怨纠葛">
+<meta name="keywords" content="XML,HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XML 与 HTML 傻傻分不清？">
+<meta property="og:url" content="http://yoursite.com/2019/11/28/XML与HTML傻傻分不清？/index.html">
 <meta property="og:site_name" content="FINO ALLA FINE">
+<meta property="og:description" content="XML 与 HTML 的恩怨纠葛">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-28T08:19:44.905Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FINO ALLA FINE">
-  <link rel="canonical" href="http://yoursite.com/tags/词法/">
+<meta name="twitter:title" content="XML 与 HTML 傻傻分不清？">
+<meta name="twitter:description" content="XML 与 HTML 的恩怨纠葛">
+  <link rel="canonical" href="http://yoursite.com/2019/11/28/XML与HTML傻傻分不清？/">
 
 
 <script id="page-configurations">
@@ -70,13 +75,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 词法 | FINO ALLA FINE</title>
+  <title>XML 与 HTML 傻傻分不清？ | FINO ALLA FINE</title>
   
 
 
@@ -204,81 +209,143 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block tag">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">词法<small>标签</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/28/XML与HTML傻傻分不清？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FINO ALLA FINE">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">XML 与 HTML 傻傻分不清？
+
+          
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-28 16:15:27 / 修改时间：16:19:44" itemprop="dateCreated datePublished" datetime="2019-11-28T16:15:27+08:00">2019-11-28</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <div class="post-description">XML 与 HTML 的恩怨纠葛</div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        <p>XML 和 HTML 在开发中经常会碰到。两者之间有什么关联和区别呢？根据开发世界的发展历程，我们可以试着来理解一下。</p>
+<h2 id="Content-Structure-和-Format-是早期开发需要解决的主要问题"><a href="#Content-Structure-和-Format-是早期开发需要解决的主要问题" class="headerlink" title="Content Structure 和 Format 是早期开发需要解决的主要问题"></a>Content Structure 和 Format 是早期开发需要解决的主要问题</h2><p>早期开发过程中，当面对处理 Document 问题时，有三个问题是绕不开的：</p>
+<ol>
+<li>Content<br>Document 的内容。信息主要包含在 Content 中。</li>
+<li>Structure<br>Document 的结构。就像写文章，文章是有结构的，比如标题/章节等。</li>
+<li>Format<br>Document 的展示形式。</li>
+</ol>
+<h2 id="XML、HTML-是为了解决实际问题而存在的"><a href="#XML、HTML-是为了解决实际问题而存在的" class="headerlink" title="XML、HTML 是为了解决实际问题而存在的"></a>XML、HTML 是为了解决实际问题而存在的</h2><p>为了解决上述三个问题，<strong>GML</strong>(Generalized Markup Language)出现了。( 搞笑的是，GML 也是三位创造者 LastName 的简写。Charles Goldfarb, Edward Mosher and Raymond Lorie)</p>
+<p>GML 的解决方法是增加 Tag。具体做法是将 Content 包含在 Tag 中，将 Structure 和 Format 放在 Tag 上。在此基础上，GML 还进一步标准化为<strong>SGML</strong>( standardized version of GML)。</p>
+<p>但是，问题又出现了。SGML 太严格了，</p>
+<ol>
+<li>开发者舍弃了一部分 SGML 中的 Structure 功能，开发出了 HTML</li>
+<li>开发者舍弃了一部分 SGML 中的 Format 功能，开发出了 XML</li>
+</ol>
+<p>现在好了，开发者可以同时使用 XML 和 HTML 来实现自己的目的，XML 用于提供 Content 和 Structure，HTML 提供 Content 和 Format。随着开发水平的进步，XML 也一步步演化为类似于 database 的存在。同时，更进一步的，当开发者需要 database 里的数据时，XML 承担了传输数据的任务。</p>
+<p>是不是让你想起了 JSON？</p>
+<p>没错，JSON(JavaScript Object Notation) 也提供了类似 XML 的传输数据任务。由名字就可以看出来，JSON 的发展主要受益于 JavaScript 的发展。</p>
 
-  
-  
+    </div>
 
-  
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+    
+    
         
-          <a class="post-title-link" href="/2019/11/27/JavaScript-文法-词法/" itemprop="url">
-            <span itemprop="name">JavaScript 词法</span>
-          </a>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/XML/" rel="tag"># XML</a>
+            
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+            
+          </div>
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-11-27T02:21:06+08:00"
-              content="2019-11-27">
-          11-27
-        </time>
-      </div>
+        
 
-    </header>
-  </article>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/27/JavaScript-运行时-Truthy的使用/" rel="next" title="JavaScript 中 Truthy 的使用">
+                  <i class="fa fa-chevron-left"></i> JavaScript 中 Truthy 的使用
+                </a>
+              
+            </div>
 
+            <span class="post-nav-divider"></span>
 
-
-    </div>
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
@@ -297,6 +364,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -309,6 +381,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Structure-和-Format-是早期开发需要解决的主要问题"><span class="nav-number">1.</span> <span class="nav-text">Content Structure 和 Format 是早期开发需要解决的主要问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML、HTML-是为了解决实际问题而存在的"><span class="nav-number">2.</span> <span class="nav-text">XML、HTML 是为了解决实际问题而存在的</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
