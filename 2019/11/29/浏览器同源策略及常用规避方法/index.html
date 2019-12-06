@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="FINO ALLA FINE">
 <meta property="og:description" content="一文搞定浏览器同源策略">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-06T13:33:08.539Z">
+<meta property="og:updated_time" content="2019-12-06T13:41:33.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器同源策略及常用规避方法">
 <meta name="twitter:description" content="一文搞定浏览器同源策略">
@@ -257,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-06 21:33:08" itemprop="dateModified" datetime="2019-12-06T21:33:08+08:00">2019-12-06</time>
+                <time title="修改时间：2019-12-06 21:41:33" itemprop="dateModified" datetime="2019-12-06T21:41:33+08:00">2019-12-06</time>
               </span>
             
           
@@ -310,10 +310,18 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>One<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>将这两个 HTML 文件丢到静态服务器 serve 上，就可以开始玩了。</p>
-<p>在浏览器的 Console 中，执行 <code>document.getElementById(&#39;one&#39;).contentWindow.document.getElementsByTagName(&#39;h1&#39;)[0].innerText</code>，可以得到输出 <code>One</code>，也就是说，同源的网页间可以互相访问。</p>
-<p>但是，如果执行 <code>document.getElementById(&#39;qq&#39;).contentWindow.document</code>，会得到错误：</p>
+<p>在浏览器的 Console 中，</p>
+<ol>
+<li><p>执行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span></span><br><span class="line">  .getElementById(<span class="string">"one"</span>)</span><br><span class="line">  .contentWindow.document.getElementsByTagName(<span class="string">"h1"</span>)[<span class="number">0</span>].innerText;</span><br></pre></td></tr></table></figure>
+
+<p>可以得到输出 <code>One</code>，也就是说，同源的网页间可以互相访问。</p>
+</li>
+<li><p>但是，如果执行 <code>document.getElementById(&#39;qq&#39;).contentWindow.document</code>，会得到错误：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VM824:1 Uncaught DOMException: Blocked a frame with origin &quot;http://localhost:5000&quot; from accessing a cross-origin frame.</span><br><span class="line">    at &lt;anonymous&gt;:1:44</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
 <h2 id="解决-Cookie、LocalStorage、IndexDB-和-DOM-无法获得的问题"><a href="#解决-Cookie、LocalStorage、IndexDB-和-DOM-无法获得的问题" class="headerlink" title="解决 Cookie、LocalStorage、IndexDB 和 DOM 无法获得的问题"></a>解决 Cookie、LocalStorage、IndexDB 和 DOM 无法获得的问题</h2><p>Cookie 是服务器写入浏览器的一小段信息，只有同源的网页才能共享。</p>
 <h3 id="两个网页一级域名相同，只是二级域名不同时"><a href="#两个网页一级域名相同，只是二级域名不同时" class="headerlink" title="两个网页一级域名相同，只是二级域名不同时"></a>两个网页一级域名相同，只是二级域名不同时</h3><ul>
 <li>客户端的解决方法：浏览器允许通过在两个页面上设置相同的 document.domain，两个网页就可以共享 Cookie</li>
