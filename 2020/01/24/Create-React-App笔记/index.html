@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="FINO ALLA FINE">
 <meta property="og:description" content="Create React App 笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-29T07:11:35.606Z">
+<meta property="og:updated_time" content="2020-01-29T12:47:22.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Create React App 笔记">
 <meta name="twitter:description" content="Create React App 笔记">
@@ -257,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-29 15:11:35" itemprop="dateModified" datetime="2020-01-29T15:11:35+08:00">2020-01-29</time>
+                <time title="修改时间：2020-01-29 20:47:22" itemprop="dateModified" datetime="2020-01-29T20:47:22+08:00">2020-01-29</time>
               </span>
             
           
@@ -361,7 +361,16 @@
 </ol>
 <p>如果两种方式设置了同一个环境变量，<strong>以 shell 中的为准</strong>。</p>
 <p>环境变量会在编译的时候编译进生成的 JavaScript 中。</p>
-<h2 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h2><h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><h2 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h2><h2 id="Progressive-Web-App"><a href="#Progressive-Web-App" class="headerlink" title="Progressive Web App"></a>Progressive Web App</h2>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><ul>
+<li>Jest：提供测试框架。主要用于冒烟测试。包含了 <code>expect()</code> (Chai 的功能）、<code>jest.fn()</code> (Sinon 的功能)。</li>
+<li>Enzyme：主要用于 Component 的测试。</li>
+<li>react-testing-library:类似于 Enzyme。</li>
+<li>Chai：断言库。</li>
+<li>Sinon：Mock 库。</li>
+</ul>
+<p>常用方案 1：<br>Jest + Enzyme</p>
+<p>常用方案 2：<br>Jest + react-testing-library + jest-dom</p>
+<h2 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h2><h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><h2 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h2><h2 id="Progressive-Web-App"><a href="#Progressive-Web-App" class="headerlink" title="Progressive Web App"></a>Progressive Web App</h2><h2 id="Fetch-Axios"><a href="#Fetch-Axios" class="headerlink" title="Fetch Axios"></a>Fetch Axios</h2>
     </div>
 
     
@@ -445,7 +454,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#browserslist"><span class="nav-number">1.</span> <span class="nav-text">browserslist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-app-polyfill"><span class="nav-number">2.</span> <span class="nav-text">react-app-polyfill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESLint"><span class="nav-number">3.</span> <span class="nav-text">ESLint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#当代码有-Lint-Error-时，VSCode-中有提示"><span class="nav-number">3.1.</span> <span class="nav-text">当代码有 Lint Error 时，VSCode 中有提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当代码有-Lint-Error-时，不允许-start-或-build"><span class="nav-number">3.2.</span> <span class="nav-text">当代码有 Lint Error 时，不允许 start 或 build</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">4.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">5.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Router"><span class="nav-number">6.</span> <span class="nav-text">Router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeScript"><span class="nav-number">7.</span> <span class="nav-text">TypeScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap"><span class="nav-number">8.</span> <span class="nav-text">Bootstrap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Progressive-Web-App"><span class="nav-number">9.</span> <span class="nav-text">Progressive Web App</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#browserslist"><span class="nav-number">1.</span> <span class="nav-text">browserslist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-app-polyfill"><span class="nav-number">2.</span> <span class="nav-text">react-app-polyfill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESLint"><span class="nav-number">3.</span> <span class="nav-text">ESLint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#当代码有-Lint-Error-时，VSCode-中有提示"><span class="nav-number">3.1.</span> <span class="nav-text">当代码有 Lint Error 时，VSCode 中有提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当代码有-Lint-Error-时，不允许-start-或-build"><span class="nav-number">3.2.</span> <span class="nav-text">当代码有 Lint Error 时，不允许 start 或 build</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">4.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">5.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">6.</span> <span class="nav-text">Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Router"><span class="nav-number">7.</span> <span class="nav-text">Router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeScript"><span class="nav-number">8.</span> <span class="nav-text">TypeScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap"><span class="nav-number">9.</span> <span class="nav-text">Bootstrap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Progressive-Web-App"><span class="nav-number">10.</span> <span class="nav-text">Progressive Web App</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fetch-Axios"><span class="nav-number">11.</span> <span class="nav-text">Fetch Axios</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
