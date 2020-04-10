@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="FINO ALLA FINE">
 <meta property="og:description" content="XML 与 HTML 的恩怨纠葛">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-29T06:02:49.883Z">
+<meta property="og:updated_time" content="2020-04-10T05:43:07.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XML 与 HTML 傻傻分不清？">
 <meta name="twitter:description" content="XML 与 HTML 的恩怨纠葛">
@@ -257,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-29 14:02:49" itemprop="dateModified" datetime="2019-11-29T14:02:49+08:00">2019-11-29</time>
+                <time title="修改时间：2020-04-10 13:43:07" itemprop="dateModified" datetime="2020-04-10T13:43:07+08:00">2020-04-10</time>
               </span>
             
           
@@ -292,17 +292,17 @@
 <h2 id="Content-Structure-和-Format-是早期开发需要解决的主要问题"><a href="#Content-Structure-和-Format-是早期开发需要解决的主要问题" class="headerlink" title="Content Structure 和 Format 是早期开发需要解决的主要问题"></a>Content Structure 和 Format 是早期开发需要解决的主要问题</h2><p>早期开发过程中，当面对处理 Document 问题时，有三个问题是绕不开的：</p>
 <ol>
 <li>Content<br>Document 的内容。信息主要包含在 Content 中。</li>
-<li>Structure<br>Document 的结构。就像写文章，文章是有结构的，比如标题/章节等。</li>
+<li>Structure<br>Document 中内容的结构。就像写文章，文章是有结构的，比如标题/章节等。</li>
 <li>Format<br>Document 的展示形式。</li>
 </ol>
 <h2 id="XML、HTML-是为了解决实际问题而存在的"><a href="#XML、HTML-是为了解决实际问题而存在的" class="headerlink" title="XML、HTML 是为了解决实际问题而存在的"></a>XML、HTML 是为了解决实际问题而存在的</h2><p>为了解决上述三个问题，<strong>GML</strong>(Generalized Markup Language)出现了。( 搞笑的是，GML 也是三位创造者 LastName 的简写。Charles Goldfarb, Edward Mosher and Raymond Lorie)</p>
 <p>GML 的解决方法是增加 Tag。具体做法是将 Content 包含在 Tag 中，将 Structure 和 Format 放在 Tag 上。在此基础上，GML 还进一步标准化为<strong>SGML</strong>( standardized version of GML)。</p>
 <p>但是，问题又出现了。SGML 太严格了，</p>
 <ol>
-<li>开发者舍弃了一部分 SGML 中的 Structure 功能，开发出了 HTML</li>
-<li>开发者舍弃了一部分 SGML 中的 Format 功能，开发出了 XML</li>
+<li>开发者舍弃了一部分 SGML 中的 Structure 功能，着重于展示内容，开发出了 HTML</li>
+<li>开发者舍弃了一部分 SGML 中的 Format 功能，着重于传递内容，开发出了 XML</li>
 </ol>
-<p>现在好了，开发者可以同时使用 XML 和 HTML 来实现自己的目的，XML 用于提供 Content 和 Structure，HTML 提供 Content 和 Format。随着开发水平的进步，XML 也一步步演化为类似于 database 的存在。同时，更进一步的，当开发者需要 database 里的数据时，XML 承担了传输数据的任务。</p>
+<p>现在好了，开发者可以同时使用 XML 和 HTML 来实现自己的目的，XML 用于提供传输内容和结构，HTML 用于展示内容。随着开发水平的进步，XML 也一步步演化为类似于 database 的存在。同时，更进一步的，当开发者需要 database 里的数据时，XML 承担了传输数据的任务。</p>
 <p>是不是让你想起了 JSON？</p>
 <p>没错，JSON(JavaScript Object Notation) 也提供了类似 XML 的传输数据任务。由名字就可以看出来，JSON 的发展主要受益于 JavaScript 的发展。</p>
 
